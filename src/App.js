@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import Store from './AppStore';
+import { Provider } from 'react-redux';
 import './App.css';
 import ChatList from './components/list/ChatList';
 
 function App() {
   return (
-    <div className="App">
-      <ChatList />
-    </div>
+    <Provider store={Store}>
+      <div className="App">
+        <ChatList />
+      </div>
+    </Provider>
   );
 }
 
