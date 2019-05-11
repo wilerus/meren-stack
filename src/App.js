@@ -1,7 +1,7 @@
 import React from 'react';
 import Store from './AppStore';
 import { Provider } from 'react-redux';
-import './App.css';
+import './styles/App.css';
 import ChatList from './components/list/ChatList';
 
 function App() {
