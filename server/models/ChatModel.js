@@ -1,16 +1,18 @@
 import mongoose from 'mongoose';
+import { messageSchema } from './MessageModel.js';
 
-var kittySchema = new mongoose.Schema({
-  name: String
+var chatSchema = new mongoose.Schema({
+  name: String,
+  messages: [messageSchema]
 });
 
-kittySchema.methods.speak = function() {
+chatSchema.methods.speak = function() {
   var greeting = this.name
     ? 'Meow name is ' + this.name
     : "I don't have a name";
   console.log(greeting);
 };
 
-var Kitten = mongoose.model('Kitten', kittySchema);
+var ChatModel = mongoose.model('chat', chatSchema);
 
-export default Kitten;
+export default ChatModel;
