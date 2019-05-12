@@ -1,16 +1,17 @@
-var express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+
 var app = express();
-const path = require('path');
 
-var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost/EmployeeDB';
+var url = 'mongodb://localhost/test';
 
-MongoClient.connect(url, function(err, db) {
-  var cursor = db.collection('Employee').find();
+mongoose.connect(url, { useNewUrlParser: true });
 
-  cursor.each(function(err, doc) {
-    console.log(doc);
-  });
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
 });
 
 app.get('/', function(req, res) {
