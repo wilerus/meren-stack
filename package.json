@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:server": "nodemon --experimental-modules server/index.js",
+    "server": "nodemon --experimental-modules server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
