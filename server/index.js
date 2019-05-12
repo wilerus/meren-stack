@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 
+import ChatModel from './models/ChatModel.js';
+
 var app = express();
 
 var url = 'mongodb://localhost/test';
@@ -16,6 +18,14 @@ db.once('open', function() {
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
+
+app.get('/createAKitten', function(req, res) {
+  var fluffy = new ChatModel({ name: 'fluffy' });
+  fluffy.save(function(err, fluffy) {
+    if (err) return console.error(err);
+    fluffy.speak();
+  });
 });
 
 app.listen(3010, function() {
