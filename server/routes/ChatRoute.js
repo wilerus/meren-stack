@@ -3,21 +3,18 @@ import ChatModel from '../models/ChatModel.js';
 
 const router = express.Router();
 
-router.get('/', function(req, res) {
-  var fluffy = new ChatModel({ name: 'fluffy' });
-
-  fluffy.save(function(err, fluffy) {
-    if (err) return console.error(err);
-    fluffy.speak();
+router.get('/getMessages', function(req, res) {
+  ChatModel.find(function(err, messages) {
+    res.send(JSON.stringify(messages));
   });
 });
 
 router.post('/postMessage', function(req, res) {
-  var fluffy = new ChatModel({ name: 'fluffy' });
+  var newMessage = new ChatModel({ name: req.params.name });
 
-  fluffy.save(function(err, fluffy) {
+  newMessage.save(function(err, fluffy) {
     if (err) return console.error(err);
-    fluffy.speak();
+    res.send(JSON.stringify(newMessage));
   });
 });
 

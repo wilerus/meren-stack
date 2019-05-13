@@ -11,20 +11,14 @@
   ],
   "author": "wilerus",
   "license": "MIT",
-  "type": "module",
   "proxy": "http://localhost:3010",
   "dependencies": {
-    "express": "^4.16.4",
-    "mogoose": "^3.1.8",
-    "mongodb": "^3.2.4",
-    "mongojs": "^2.6.0",
-    "mongoose": "^5.5.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0-alpha.4",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,7 +44,7 @@
   },
   "devDependencies": {
     "eslint": "^5.16.0",
-    "nodemon": "^1.19.0",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "react-scripts": "3.0.0"
   }
 }

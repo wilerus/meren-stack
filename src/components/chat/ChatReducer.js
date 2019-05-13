@@ -9,17 +9,17 @@ const initialState = {
 
 function chatReducer(state = initialState, action) {
   switch (action.type) {
-    case 'increment':
-      return {
-        items: [
-          {
-            id: 1,
-            name: state.items[0].name + 1
-          }
-        ]
-      };
-    case 'DECREMENT':
-      return state - 1;
+    case 'postMessage':
+      return fetch('chat/postMessage', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: state.items[0].name + 1
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          return state.items.push(data);
+        });
     default:
       return state;
   }

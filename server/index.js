@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 import path from 'path';
 import AppRouter from './AppRouter.js';
 
@@ -23,3 +24,6 @@ app.get('/', function(req, res) {
 app.listen(3010, function() {
   console.log('Example app listening on port 3010!');
 });
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
