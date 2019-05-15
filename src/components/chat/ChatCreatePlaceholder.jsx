@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-export default function Chat(props) {
+export default function ChatList(props) {
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
 
@@ -12,8 +12,8 @@ export default function Chat(props) {
         onChange={e => setInput(e.target.value)}
         type="text"
       />
-      <button onClick={() => dispatch({ type: 'postMessage', text: input })}>
-        Post my message
+      <button onClick={() => dispatch({ type: 'createChat', name: input })}>
+        Create chat
       </button>
     </div>
   );

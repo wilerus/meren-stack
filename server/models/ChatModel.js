@@ -6,13 +6,6 @@ var chatSchema = new mongoose.Schema({
   messages: [messageSchema]
 });
 
-chatSchema.methods.speak = function() {
-  var greeting = this.name
-    ? 'Meow name is ' + this.name
-    : "I don't have a name";
-  console.log(greeting);
-};
-
 var ChatModel = mongoose.model('chat', chatSchema);
 
 export default ChatModel;
