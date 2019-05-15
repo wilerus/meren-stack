@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './styles/App.css';
 import Chat from './pages/Chat';
 import TopNavigation from './components/topNavigation/TopNavigation';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (

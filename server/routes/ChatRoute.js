@@ -1,12 +1,19 @@
 import express from 'express';
 import ChatModel from '../models/ChatModel.js';
 import MessageModel from '../models/MessageModel.js';
+import ChatListModel from '../models/ChatListModel.js';
 
 const router = express.Router();
 
 router.get('/getChat', function(req, res) {
   ChatModel.find({ id: req.params.id }, function(err, chat) {
     res.send(JSON.stringify(chat));
+  });
+});
+
+router.get('/list', function(req, res) {
+  ChatListModel.find(function(err, chatsList) {
+    res.send(JSON.stringify(chatsList));
   });
 });
 

@@ -11,6 +11,16 @@ function chatReducer(state = {}, action) {
         .then(data => {
           return state.chat.push(data);
         });
+    case 'getChat':
+      return fetch('chat/list', {
+        method: 'GET'
+      })
+        .then(response => response.json())
+        .then(data => {
+          return {
+            chats: data
+          };
+        });
     case 'createChat':
       return fetch('chat/createChat', {
         method: 'POST',

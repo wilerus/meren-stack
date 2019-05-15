@@ -11,10 +11,11 @@ export default function ChatList(props) {
         return <ListItem name={listItem.name} key={listItem.id} />;
       })
     : [];
-    : [];
 
-  return <div>
-    <ul>{listItems}</ul>
-    <ChatInput/>
-    </div>;
+  return (
+    <div>
+      <ul>{listItems}</ul>
+      <ChatInput />
+    </div>
+  );
 }
