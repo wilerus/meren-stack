@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from '../components/chat/ListItem';
+import ChatCard from '../components/chat/ChatCard';
 import ChatCreatePlaceholder from '../components/chat/ChatCreatePlaceholder';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChats } from '../components/chat/Actions';
@@ -9,9 +9,8 @@ export default function ChatList() {
 
   const chats = useSelector(state => state.chatReducer.chats);
 
-  dispatch(getChats);
-
   if (chats === undefined) {
+    dispatch(getChats);
     return <div>Loading</div>;
   }
 
@@ -20,7 +19,7 @@ export default function ChatList() {
   }
 
   const listItems = chats.map(listItem => {
-    return <ListItem name={listItem.name} key={listItem.id} />;
+    return <ChatCard name={listItem.name} key={listItem._id} />;
   });
 
   return <ul>{listItems}</ul>;

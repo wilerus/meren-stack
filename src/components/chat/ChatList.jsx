@@ -1,14 +1,14 @@
 import React from 'react';
-import ListItem from './ListItem';
+import MessageCard from './MessageCard';
 import { useSelector } from 'react-redux';
-import ChatInput from '../components/chat/ChatInput';
+import ChatInput from './ChatInput';
 
 export default function ChatList(props) {
   const items = useSelector(state => state.items);
 
   const listItems = items
     ? items.map(listItem => {
-        return <ListItem name={listItem.name} key={listItem.id} />;
+        return <MessageCard name={listItem.name} key={listItem.id} />;
       })
     : [];
 

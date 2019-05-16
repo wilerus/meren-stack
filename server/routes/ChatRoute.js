@@ -36,7 +36,7 @@ router.post('/createChat', function(req, res) {
 });
 
 router.post('/postMessage', function(req, res) {
-  ChatModel.find(req.params.id, function(err, chat) {
+  ChatModel.findOne(req.params.id, function(err, chat) {
     if (err) return console.error(err);
     var newMessage = new MessageModel({ text: req.params.text });
 
