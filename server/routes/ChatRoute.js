@@ -12,8 +12,8 @@ router.get('/getChat', function(req, res) {
 });
 
 router.get('/list', function(req, res) {
-  ChatListModel.find(function(err, chatsList) {
-    res.send(JSON.stringify(chatsList));
+  ChatListModel.findOne({ name: 'rootModel' }, function(err, chatsList) {
+    res.send(JSON.stringify(chatsList.chats));
   });
 });
 
@@ -24,12 +24,14 @@ router.get('/getMessages', function(req, res) {
 });
 
 router.post('/createChat', function(req, res) {
-  console.log(req.params);
-  var newChat = new ChatModel({ name: req.params.name });
+  var newChat = new ChatModel({ name: req.body.name });
+  ChatListModel.findOne({ name: 'rootModel' }, function(err, models) {
+    models.chats.push(newChat);
 
-  newChat.save(function(err) {
-    if (err) return console.error(err);
-    res.send(JSON.stringify(newChat));
+    models.save(function(err) {
+      if (err) return console.error(err);
+      res.send(JSON.stringify(newChat));
+    });
   });
 });
 
