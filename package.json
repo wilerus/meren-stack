@@ -1,6 +1,6 @@
 {
   "name": "meren-stack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "test meren stack",
   "main": "index.js",
   "keywords": [
@@ -45,6 +45,6 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "prettier": "^1.17.1",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.1"
   }
 }

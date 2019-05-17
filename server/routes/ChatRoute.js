@@ -6,7 +6,7 @@ import ChatListModel from '../models/ChatListModel.js';
 const router = express.Router();
 
 router.get('/getChat', function(req, res) {
-  ChatModel.find({ id: req.params.id }, function(err, chat) {
+  ChatModel.findById(req.query.id, function(err, chat) {
     res.send(JSON.stringify(chat));
   });
 });

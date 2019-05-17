@@ -1,27 +1,29 @@
 import React from 'react';
-import ChatCard from '../components/chat/ChatCard';
-import '../components/chat/Chat.css';
-import ChatCreatePlaceholder from '../components/chat/ChatCreatePlaceholder';
+import MessageCard from '../components/chat/MessageCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { getChats } from '../components/chat/Actions';
+import ChatInput from '../components/chat/ChatInput';
+import { getMessages } from '../components/chat/Actions';
 
-export default function ChatList() {
+export default function ChatList(props) {
   const dispatch = useDispatch();
 
-  const chats = useSelector(state => state.chatReducer.chats);
+  const messages = useSelector(state => state.messages);
 
-  if (chats === undefined) {
-    dispatch(getChats);
+  if (messages === undefined) {
+    dispatch(() => getMessages(props.match.params.id));
     return <div>Loading</div>;
   }
 
-  if (chats.length === 0) {
-    return <ChatCreatePlaceholder />;
-  }
+  const listItems = messages
+    ? messages.map(listItem => {
+        return <MessageCard name={listItem.name} key={listItem.id} />;
+      })
+    : [];
 
-  const listItems = chats.map(listItem => {
-    return <ChatCard name={listItem.name} key={listItem._id} />;
-  });
-
-  return <div className="chat-list_container">{listItems}</div>;
+  return (
+    <div>
+      <ul>{listItems}</ul>
+      <ChatInput />
+    </div>
+  );
 }
