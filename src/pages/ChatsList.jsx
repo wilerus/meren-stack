@@ -20,7 +20,7 @@ export default function ChatList(props) {
   }
 
   const rederectToMessages = function(id) {
-    props.history.push(`chat/${id}/messages`);
+    props.history.push(`/chat/${id}/messages`);
   };
 
   const listItems = chats.map(listItem => {
