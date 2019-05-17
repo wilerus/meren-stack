@@ -1,0 +1,26 @@
+.chat-list_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: center;
+  background-color: #192841;
+  flex: 1;
+}
+.chat-list_card {
+  display: flex;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  text-align: center;
+  padding: 0.5rem;
+  justify-content: center;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.2s;
+  color: white;
+  background-color: #203354;
+}
+
+.chat-list_card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
