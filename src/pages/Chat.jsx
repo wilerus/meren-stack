@@ -3,6 +3,7 @@ import MessageCard from '../components/chat/MessageCard';
 import { useSelector, useDispatch } from 'react-redux';
 import ChatInput from '../components/chat/ChatInput';
 import { getChat } from '../components/chat/Actions';
+import '../components/chat/Chat.css';
 
 export default function ChatList(props) {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function ChatList(props) {
     return <MessageCard name={listItem.name} key={listItem.id} />;
   });
   return (
-    <div>
+    <div className="chat-list_container">
       <ul>{listItems}</ul>
       <ChatInput />
     </div>

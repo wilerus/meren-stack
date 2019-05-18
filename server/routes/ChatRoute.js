@@ -42,9 +42,9 @@ router.post('/postMessage', function(req, res) {
 
     chat.messages.push(newMessage);
 
-    chat.save(function(err, fluffy) {
+    chat.save(function(err, chat) {
       if (err) return console.error(err);
-      res.json(newMessage);
+      res.json(newMessage.text);
     });
   });
 });
