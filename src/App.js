@@ -6,7 +6,7 @@ import Chat from './pages/Chat';
 import Home from './pages/Home';
 import './styles/TopNavigation.css';
 
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,9 +17,11 @@ function App() {
             Open chat
           </Link>
         </div>
-        <Route path="" component={Home} />
-        <Route path="/chat" component={ChatsList} />
-        <Route path="/chat/:id/messages" component={Chat} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/chat" component={ChatsList} />
+          <Route path="/chat/:id/messages" component={Chat} />
+        </Switch>
       </Router>
     </Provider>
   );
