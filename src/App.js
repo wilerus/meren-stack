@@ -6,6 +6,7 @@ import Chat from './pages/Chat';
 import Home from './pages/Home';
 import './styles/TopNavigation.css';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -17,11 +18,19 @@ function App() {
             Open chat
           </Link>
         </div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/chat" component={ChatsList} />
-          <Route path="/chat/:id/messages" component={Chat} />
-        </Switch>
+        <Route
+          render={({ location }) => (
+            <TransitionGroup>
+              <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/chat" component={ChatsList} />
+                  <Route path="/chat/:id/messages" component={Chat} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )}
+        />
       </Router>
     </Provider>
   );
