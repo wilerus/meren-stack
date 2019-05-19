@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import morgan from 'morgan';
 import path from 'path';
 import AppRouter from './AppRouter.js';
 import ChatListModel from './models/ChatListModel.js';
@@ -7,6 +8,7 @@ import ChatListModel from './models/ChatListModel.js';
 var app = express();
 
 app.use(express.json());
+app.use(morgan('dev'));
 
 AppRouter(app);
 
