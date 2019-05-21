@@ -20,9 +20,9 @@ function App() {
         </div>
         <Route
           render={({ location }) => (
-            <TransitionGroup>
+            <TransitionGroup className="transition-group_container">
               <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                <Switch>
+                <Switch location={location}>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/chat" component={ChatsList} />
                   <Route path="/chat/:id/messages" component={Chat} />
