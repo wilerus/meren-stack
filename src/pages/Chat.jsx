@@ -20,12 +20,12 @@ export default function ChatList(props) {
   }
 
   const listItems = chat.messages.map(listItem => {
-    return <MessageCard name={listItem.name} key={listItem.id} />;
+    return <MessageCard name={listItem.text} key={listItem._id} />;
   });
   return (
     <div className="chat-list_container">
       <ul>{listItems}</ul>
-      <ChatInput />
+      <ChatInput id={props.match.params.id} />
     </div>
   );
 }

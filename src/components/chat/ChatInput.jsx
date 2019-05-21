@@ -13,7 +13,11 @@ export default function Chat(props) {
         onChange={e => setInput(e.target.value)}
         type="text"
       />
-      <button onClick={() => dispatch(() => postMessage(input))}>
+      <button
+        onClick={() =>
+          dispatch(() => postMessage({ text: input, id: props.id }))
+        }
+      >
         Post my message
       </button>
     </div>

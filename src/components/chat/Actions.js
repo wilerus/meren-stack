@@ -16,16 +16,20 @@ export async function getChat(id) {
   AppStore.dispatch({ type: 'setChat', chat: data });
 }
 
-export async function postMessage(text) {
+export async function postMessage(data) {
   const response = await fetch(`/chat/postMessage`, {
     method: 'POST',
     body: JSON.stringify({
-      text: text
+      text: data.text,
+      id: data.id
     }),
     headers: {
       'content-type': 'application/json'
     }
   });
-  const data = await response.json();
-  AppStore.dispatch({ type: 'addMessage', message: data });
+  const message = await response.json();
+  AppStore.dispatch({
+    type: 'addMessage',
+    data: { id: data.id, message: message }
+  });
 }

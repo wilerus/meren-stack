@@ -6,7 +6,7 @@ export default function(props) {
   return (
     <div>
       <li>{props.name}</li>
-      <button onClick={() => dispatch({ type: 'postMessage' })} />
+      <button onClick={() => dispatch({ type: 'postMessage', id: props.id })} />
     </div>
   );
 }

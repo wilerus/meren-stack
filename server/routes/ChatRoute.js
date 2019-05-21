@@ -36,15 +36,15 @@ router.post('/createChat', function(req, res) {
 });
 
 router.post('/postMessage', function(req, res) {
-  ChatModel.findOne(req.params.id, function(err, chat) {
-    if (err) return console.error(err);
-    var newMessage = new MessageModel({ text: req.params.text });
+  ChatListModel.findOne({ name: 'rootModel' }, function(err, chatsList) {
+    const chat = chatsList.chats.id(req.body.id);
+
+    var newMessage = new MessageModel({ text: req.body.text });
 
     chat.messages.push(newMessage);
-
-    chat.save(function(err, chat) {
+    chatsList.save(function(err) {
       if (err) return console.error(err);
-      res.json(newMessage.text);
+      res.json(newMessage);
     });
   });
 });
