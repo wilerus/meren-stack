@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createChat } from "./Actions";
 
 export default function ChatList(props) {
   const dispatch = useDispatch();
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   return (
     <div>
@@ -12,7 +13,7 @@ export default function ChatList(props) {
         onChange={e => setInput(e.target.value)}
         type="text"
       />
-      <button onClick={() => dispatch({ type: 'createChat', name: input })}>
+      <button onClick={() => dispatch(() => createChat(input))}>
         Create chat
       </button>
     </div>

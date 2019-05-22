@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { postMessage } from './Actions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postMessage } from "./Actions";
 
 export default function Chat(props) {
   const dispatch = useDispatch();
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   return (
     <div className="messeges-input_container">
@@ -12,6 +12,8 @@ export default function Chat(props) {
         value={input}
         onChange={e => setInput(e.target.value)}
         type="text"
+        className="messeges-input__input"
+        placeholder="Write a message..."
       />
       <button
         onClick={() =>

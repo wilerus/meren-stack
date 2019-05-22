@@ -1,12 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
 
 export default function(props) {
-  const dispatch = useDispatch();
-  return (
-    <div>
-      <li>{props.name}</li>
-      <button onClick={() => dispatch({ type: 'postMessage', id: props.id })} />
-    </div>
-  );
+  return <div className="chat-message">{props.name}</div>;
 }

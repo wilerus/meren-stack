@@ -1,10 +1,10 @@
 function chatReducer(state = {}, action) {
   switch (action.type) {
-    case 'setChats':
+    case "setChats":
       return {
         chats: action.chats
       };
-    case 'setChat': {
+    case "setChat": {
       let newChats = [];
       if (state.chats) {
         newChats = state.chats.filter(c => c._id !== action.chat._id);
@@ -16,7 +16,7 @@ function chatReducer(state = {}, action) {
         chats: newChats
       };
     }
-    case 'addMessage':
+    case "addMessage":
       let editChat;
       if (state.chats) {
         editChat = state.chats.find(c => c._id === action.data.id);
@@ -27,6 +27,10 @@ function chatReducer(state = {}, action) {
 
       return {
         chats: [...state.chats.filter(c => c._id !== action.data.id), newChat]
+      };
+    case "addChat":
+      return {
+        chats: [...state.chats, action.newChat]
       };
     default:
       return state;
